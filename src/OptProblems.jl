@@ -1,7 +1,7 @@
 module OptProblems
 
 export getProblem
-
+include("beale.jl")
 include("humps.jl")
 include("rosenbrock.jl")
 
