@@ -2,6 +2,7 @@ module OptProblems
 
 export getProblem
 
+include("denschna.jl")
 include("maratosb.jl")
 include("rosenbrock.jl")
 
