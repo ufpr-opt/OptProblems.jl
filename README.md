@@ -27,7 +27,8 @@ The string version is case insensitive.
 ## Contributing
 
 To contribute a problem, create a file for it, then include the file on
-`OptProblems.jl`, then add it to the test.
+`OptProblems.jl`.
+The file and the function must have the same name.
 Use a comprehensive naming, and if necessary, add an alias for it.
 See for instance, Rosenbrock's problem. We chose to name the function
 `rosenbrock`, but CUTEst users might try to call `rosenbr`, which must
