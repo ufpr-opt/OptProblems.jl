@@ -3,7 +3,7 @@ module OptProblems
 export getProblem
 
 include("rosenbrock.jl")
-include("zangwil2.jl")
+include("sisser.jl")
 
 function getProblem(foo::Symbol)
   return eval(foo)()
