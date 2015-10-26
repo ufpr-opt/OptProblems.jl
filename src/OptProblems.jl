@@ -2,6 +2,7 @@ module OptProblems
 
 export getProblem
 
+include("humps.jl")
 include("rosenbrock.jl")
 
 function getProblem(foo::Symbol)
