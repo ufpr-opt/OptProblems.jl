@@ -1,8 +1,6 @@
 using OptProblems
 
-problems = filter( x->(x[end-2:end] == ".jl" && x != "OptProblems.jl"),
-  readdir(Pkg.dir("OptProblems", "src")) )
-problems = map(x->x[1:end-3], problems)
+problems = getProblemList()
 
 for problem in problems
   print("Problem $problem... ")

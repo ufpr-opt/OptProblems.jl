@@ -1,15 +1,18 @@
 module OptProblems
 
-export getProblem
+export getProblem, getProblemList
 
-include("beale.jl")
-include("cube.jl")
-include("denschnb.jl")
-include("himmelbh.jl")
-include("humps.jl")
-include("rosenbrock.jl")
-include("sisser.jl")
-include("zangwil2.jl")
+function __init__()
+  problems = filter( x->(x[end-2:end] == ".jl" &&
+    x != "OptProblems.jl"), readdir(Base.source_dir()))
+  for p in problems
+    @eval include($p)
+  end
+
+  global const listOfProblems = map(x->x[1:end-3], problems)
+end
+
+getProblemList() = listOfProblems
 
 function getProblem(foo::Symbol)
   return eval(foo)()
