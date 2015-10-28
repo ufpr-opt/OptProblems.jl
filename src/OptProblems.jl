@@ -3,8 +3,13 @@ module OptProblems
 export getProblem, getProblemList
 
 function __init__()
+  if VERSION < v"0.4-"
+    dir = dirname(Base.source_path())
+  else
+    dir = Base.source_dir()
+  end
   problems = filter( x->(x[end-2:end] == ".jl" &&
-    x != "OptProblems.jl"), readdir(Base.source_dir()))
+    x != "OptProblems.jl"), readdir(dir) )
   for p in problems
     @eval include($p)
   end
