@@ -1,16 +1,19 @@
 function expfit()
   p = 10
   h = 0.25
-  α = 20
-  β = 20
-  s1=s2=s3=0
+  c=[α, β]
+  f(c) = 0
+  g(c) = zeros(2)
+  H(c) = zeros(2,2)
   for i=1:p
-    s1 = s1 + (α*exp(i*h*β) - i*h)
-    s2 = s2 + 2*(α*exp(i*h*β) - i*h)*(α*h*β*exp(i*h*β) - h)
-    s3 = s3 + 2*(α*exp(i*h*β) - h)^2 + 2*(α*exp(i*h*β) - i*h)*(α*(h^2)*β*exp(i*h*β))
+    f(c) = f(c) + (α*exp(i*h*β) - i*h)
+    g(c) = g(c) + [2*(α*exp(i*h*β) - i*h)*(exp(i*h*β));
+                   2*(α*exp(i*h*β) - i*h)*(α*i*h*exp(i*h*β))]
+    H(c) = H(c) + [2*(α*exp(2*i*h*β) 2*i*h*exp(i*h*β)*(2*α*exp(i*h*β)-i*h);
+           2*i*h*exp(i*h*β)*(2*α*exp(i*h*β)-i*h)
+           2*(i*h)^2*α*exp(i*h*β)*(2*α*exp(i*h*β)-i*h)]
   end
-  x = [1.0; 1.0]
-  
-  return s1, s2, s3, x
-end
+  x = [0.0; 0.0]
 
+  return f(c), g(c), H(c), x
+end
