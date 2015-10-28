@@ -13,4 +13,4 @@ function expfit()
   
   return s1, s2, s3, x
 end
-#(2*α*h*β*exp(i*h*β)-h)
+
